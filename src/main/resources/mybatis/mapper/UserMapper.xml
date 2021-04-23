@@ -3,8 +3,24 @@
     3.0//EN"
                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.UserMapper">
+<!--    <insert id="userRegister">-->
+<!--        INSERT INTO `user`-->
+<!--        ( tea_company_id, agency_id, admin_id, user_name, user_password, user_email, user_phone, register_time, user_type )-->
+<!--        VALUES-->
+<!--        ( #{teaCompanyId}, #{agencyId}, #{adminId}, #{userName}, #{userPassword}, #{userEmail}, #{userPhone}, #{registerTime}, #{userType}-->
+<!--    </insert>-->
+
     <select id="login" resultType="com.example.demo.bean.User">
         select * from `user` where name=#{userName}
         and password=#{password}
     </select>
+
+<!--    <select id="selectByNameOrEmailOrPhone" resultType="com.example.demo.bean.User">-->
+<!--        SELECT * FROM `user` WHERE user_name = #{userName} OR user_email = #{userEmail}  OR user_phone = #{userPhone}-->
+<!--    </select>-->
+
+    <select id="userLogin" resultType="com.example.demo.bean.User">
+        select * from `user` where (user_name=#{userPhone} or user_phone=#{userPhone} or user_email=#{userPhone}) and user_password=#{userPassword}
+    </select>
+
 </mapper>
