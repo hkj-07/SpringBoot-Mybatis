@@ -27,6 +27,21 @@ public class Constant {
     //用户不存在
     public static final int LOGIN_CODE_E02 = 206;
 
-    //权限认证失败
-    public static final int AUTH_FAIL_CODE = 401;
+    //权限验证失败
+    public static final int AUTH_FAIL_CODE_E1 = 401;
+
+    //权限验证失败，重新生成token
+    public static final int AUTH_FAIL_CODE_E2 = 402;
+
+
+
+    //设置accessToken过期时间，单位：毫秒
+    public static final long ACCESS_TOKEN_EXPIRED_TIME = 30 * 60 * 1000;
+
+    //设置refreshToken过期时间，单位：毫秒
+//    public static final long REFRESH_TOKEN_EXPIRED_TIME = 3 * 60 * 1000;
+    public static final long REFRESH_TOKEN_EXPIRED_TIME = 5 * 24 * 60 * 60 * 1000;
+
+    // 存入redis中的accessToken的键的前缀
+    public static final String ACCESS_TOKEN_KEY = "ACCESS-TOKEN-USER-";
 }
