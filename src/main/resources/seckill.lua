@@ -1,3 +1,5 @@
+-- 接收redis应用端传递的键值和其它参数的
+--KEYS时是一个数组列表，在lua脚本中通过索引方式获取数组内的值
 local product_id = KEYS[1]
 local user_id = ARGV[1]
 -- 商品库存key

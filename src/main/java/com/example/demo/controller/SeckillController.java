@@ -43,8 +43,10 @@ public class SeckillController {
     @GetMapping("/{pid}/{uid}")
     public String seckillWithLua(@PathVariable long pid, @PathVariable long uid) throws Exception {
         DefaultRedisScript<Long> redisScript = new DefaultRedisScript<>();
+        // 设置脚本返回类型
         redisScript.setResultType(Long.class);
-        redisScript.setScriptSource(new ResourceScriptSource(new ClassPathResource("test.lua")));
+        //加载脚本
+        redisScript.setScriptSource(new ResourceScriptSource(new ClassPathResource("seckill.lua")));
         Long result = redisTemplate.execute(redisScript, Collections.singletonList(pid + ""), uid + "");
         log.info("result:{}", result);
 
@@ -66,6 +68,7 @@ public class SeckillController {
         //字符串转对象
 //        Order order = JsonUtil.json2Obj(value, Order.class);
 //        orderService.insert(order);
+        return;
     }
 
 //    /**
@@ -75,7 +78,7 @@ public class SeckillController {
 //     * @return
 //     */
 //    @GetMapping("/{pid}/{uid}")
-//    public String seckillWithLua(@PathVariable long pid, @PathVariable long uid) {
+//    public String seckillWithLua1(@PathVariable long pid, @PathVariable long uid) {
 //        DefaultRedisScript<Long> redisScript = new DefaultRedisScript<>();
 //        redisScript.setResultType(Long.class);
 //        redisScript.setScriptSource(new ResourceScriptSource(new ClassPathResource("seckill.lua")));
